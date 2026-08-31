@@ -1,4 +1,4 @@
-"""
+"""""
 
 You are tasked with developing a system to manage bank accounts.
 The system should allow for the following operations:
@@ -41,3 +41,32 @@ Behavior:
    * withdraw(amount)     # removes the amount from the balance, but does not allow the balance to go negative
 
 """
+class BankAccount:
+   def __init__(self, balance):
+      self.balance = balance
+
+   def deposit(self, amount):
+      self.balance += amount
+
+   def withdraw(self, amount):
+      if amount <= self.balance:
+         self.balance -= amount
+      else:
+         print("Insufficient funds") 
+
+   def check_balance(self):
+      return self.balance
+
+account = BankAccount(100)
+
+account.deposit(50)
+print(account.check_balance())
+
+account.withdraw(30)
+print(account.check_balance())
+
+account.withdraw(100)
+print(account.check_balance())
+
+account.withdraw(50)
+print(account.check_balance())         

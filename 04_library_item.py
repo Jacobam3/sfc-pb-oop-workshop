@@ -88,3 +88,49 @@ Example:
    print(dvd.get_info())    # Prints DVD information
 
 """
+class LibraryItem:
+   def __init__(self, title, publication_date, identifier):
+      self.title = title
+      self.publication_date = publication_date
+      self.identifier = identifier
+
+   def get_info(self):
+      return f"{self.title}, {self.publication_date}, {self.identifier}"
+
+class Book(LibraryItem):
+   def __init__(self, title, publication_date, identifier, author, pages):
+      super().__init__(title, publication_date, identifier)
+      self.author = author
+      self.pages = pages
+
+   def get_info(self):
+      return f"{super().get_info()}, {self.author}, {self.pages}"
+   
+
+class Magazine(LibraryItem):
+   def __init__(self, title, publication_date, identifier, issue_number, month):
+      super().__init__(title, publication_date, identifier)
+      self.issue_number = issue_number
+      self.month = month
+
+
+   def get_info(self):
+      return f"{super().get_info()}, {self.issue_number}, {self.month}"      
+
+
+class DVD(LibraryItem):
+   def __init__(self, title, publication_date, identifier, duration, director):
+      super().__init__(title, publication_date, identifier)
+      self.duration = duration
+      self.director = director
+
+   def get_info(self):
+      return f"{super().get_info()}, {self.duration}, {self.director}"  
+
+book = Book("The Great Gatsby", "1925", "B001", "F. Scott Fitzgerald", 218)
+magazine = Magazine("National Geographic", "2021", "M001", 12, "December")
+dvd = DVD("Inception", "2010", "D001", 148, "Christopher Nolan")
+
+print(book.get_info())
+print(magazine.get_info())
+print(dvd.get_info())     
